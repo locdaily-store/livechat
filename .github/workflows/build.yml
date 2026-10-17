@@ -1,0 +1,22 @@
+name: Build LocLive Private Minecraft Mod
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.6'
+      - name: Build source and Fabric mod
+        run: gradle build --no-daemon
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: LocLive-RinxAsoy-JAR
+          path: build/libs/*.jar
