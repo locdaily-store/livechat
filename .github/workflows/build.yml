@@ -1,0 +1,32 @@
+name: Build Death Count 1.21.x (real Fabric Loom)
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "src/**"
+      - "builds/**"
+      - ".github/workflows/build.yml"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        minecraft: ['1.21.1', '1.21.11']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.2.1'
+      - name: Build using official Minecraft/Fabric dependencies
+        run: gradle -p "builds/${{ matrix.minecraft }}" --no-daemon build
+      - name: Upload actual remapped JAR (only if build passed)
+        uses: actions/upload-artifact@v4
+        with:
+          name: Death-Count-1.0-Minecraft-${{ matrix.minecraft }}
+          path: builds/${{ matrix.minecraft }}/build/libs/*-1.0.jar
+          if-no-files-found: error
