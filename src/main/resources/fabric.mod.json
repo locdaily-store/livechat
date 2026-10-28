@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "death_count",
+  "version": "${version}",
+  "name": "Death Count",
+  "description": "Displays your world-specific death total above your player and in the actionbar. Each new world starts at zero.",
+  "authors": [
+    "RinxAsoy"
+  ],
+  "license": "ARR",
+  "icon": "assets/death_count/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "id.deathcount.DeathCountMod"
+    ]
+  },
+  "depends": {
+    "minecraft": "${minecraft_version}",
+    "java": ">=21",
+    "fabricloader": ">=0.16.0",
+    "fabric-api": "*"
+  }
+}

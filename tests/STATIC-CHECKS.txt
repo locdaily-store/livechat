@@ -1,0 +1,11 @@
+PASS metadata is universal
+PASS only common main initializer
+PASS direct vanilla statistic read
+PASS actionbar via native player method
+PASS follow per tick default
+PASS icon included
+PASS no phantom client dependency
+PASS both version build definitions
+PASS server lifecycle event
+NOTE: Static checks are not Minecraft runtime tests.
+PASS Gradle build archives version interpolated

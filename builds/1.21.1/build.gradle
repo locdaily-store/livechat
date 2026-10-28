@@ -1,0 +1,20 @@
+plugins { id 'net.fabricmc.fabric-loom-remap' version '1.17.21' }
+
+version = '1.0'
+group = 'id.deathcount'
+base { archivesName = "Death-Count-Fabric-${project.minecraft_version}" }
+repositories { mavenCentral(); maven { url = 'https://maven.fabricmc.net/' } }
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings loom.officialMojangMappings()
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+}
+sourceSets { main { java { srcDirs = ['../../src/main/java'] }; resources { srcDirs = ['../../src/main/resources'] } } }
+processResources {
+    inputs.property 'version', project.version
+    inputs.property 'minecraft_version', project.minecraft_version
+    filesMatching('fabric.mod.json') { expand(version:project.version, minecraft_version:project.minecraft_version) }
+}
+tasks.withType(JavaCompile).configureEach { options.release = 21; options.encoding = 'UTF-8' }
+java { toolchain { languageVersion = JavaLanguageVersion.of(21) } }

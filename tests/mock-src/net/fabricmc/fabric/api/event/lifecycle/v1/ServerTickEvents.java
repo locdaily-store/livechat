@@ -1,0 +1,1 @@
+package net.fabricmc.fabric.api.event.lifecycle.v1; import net.minecraft.server.MinecraftServer; public final class ServerTickEvents {public interface Listener{void on(MinecraftServer s);} public static class Event{public Listener cb; public void register(Listener l){cb=l;} public void fire(MinecraftServer s){cb.on(s);}} public static final Event END_SERVER_TICK=new Event();}

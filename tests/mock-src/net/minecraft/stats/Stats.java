@@ -1,0 +1,1 @@
+package net.minecraft.stats; public class Stats {public static final Stats CUSTOM=new Stats(); public static final String DEATHS="deaths";public String get(String s){return s;}}

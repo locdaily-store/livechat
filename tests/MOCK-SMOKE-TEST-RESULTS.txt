@@ -1,0 +1,4 @@
+Java 21 javac compile: PASS (mocked Fabric and Minecraft APIs)
+Simulated 1.21.1: PASS
+Simulated 1.21.11: PASS
+IMPORTANT: These tests validate Java syntax and our simulation, not actual Minecraft compatibility or real Fabric Loom remapping.
